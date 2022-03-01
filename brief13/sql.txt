@@ -1,0 +1,62 @@
+CREATE DATABASE store_management;
+USE store_management;
+
+CREATE TABLE products(
+	product_id varchar (20) PRIMARY KEY,
+    label varchar (20),
+    description varchar (20),
+    unit_price int, 
+    quantity int
+);
+
+CREATE TABLE clients(
+	client_id varchar (20) PRIMARY KEY,
+    last_name varchar (20),
+    first_name varchar (20),
+    address varchar (20),
+    phone_number varchar (20),
+    email varchar (20),
+    pass_word varchar (20)
+);
+
+CREATE TABLE orders(
+	order_id varchar (20) PRIMARY KEY,
+    order_date varchar (20),
+    order_address varchar (20),
+    client_id varchar (20),
+    FOREIGN KEY (client_id) REFERENCES clients(client_id)
+);
+CREATE TABLE orders_details(
+	order_id varchar (20),
+    FOREIGN KEY (order_id) REFERENCES orders (order_id),
+    prodoct_id varchar (20),
+    FOREIGN KEY (product_id ) REFERENCES orders (product_id),
+    order_quantity int,
+    PRIMARY KEY (order_id,product_id)
+);
+INSERT INTO products
+VALUES('C1913' , 'le vernis' , 'Chanel nail color' , '30$' ,'159528' ),
+('LM1885', 'rose pulpe', 'GLOSS COCONUT RED', '32$', 728),
+('M1924', 'eyeliner', 'Shadow and outline pen', '34$', 182213),
+('G1910', 'mascara base', 'volume and care lash primer', '32$', 190240);
+
+ INSERT INTO clients
+ VALUES('B18', 'Bennis', 'Kenza', 'Fes','+212 645 763 897', 'kenzabennis@gmail.com', 'bennis2022'),
+ ('L22', 'Lessan eddine', 'Khaoula', 'assilah','+212 685 963 347', 'khaoulakhaoula1234@gmail.com', 'khaoula@12'),
+ ('N20', 'Oubarch', 'Chaymae', 'Casablanca','+212 689 334 998', 'oubarch2022@gmail.com', 'oubarch 12'),
+ ('*R21', 'Boughlala', 'Rajae', 'Tangier','+212 677 822 817', 'rajaeboughlala1234@gmail.com', 'boughlala rajae');
+ 
+ INSERT INTO orders
+ VALUES('P234', '2021/08/01', 'Tangier,ibiria','P334'),
+       ('M456', '2021/10/11', 'Casablanca,Moulay Rachid','P014'),
+       ('L119', '2022/02/18', 'Fés,Agdal','P180'),
+       ('Q474', '2022/01/25', 'Marrakech,Bab Kesba','B008');
+       
+ INSERT INTO orders_details     
+ VALUES('P234','C1913', 8),
+ 	   ('M456','LM1885',10),
+       ('L119','G1910',18;
+ 
+ 
+
+
